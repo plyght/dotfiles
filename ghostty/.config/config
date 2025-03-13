@@ -1,0 +1,38 @@
+# Window Appearance
+macos-titlebar-style = hidden
+background-opacity = 1
+background-blur-radius = 50
+theme = zenwritten_dark
+clipboard-read = allow
+
+# for non-rounded window
+# window-decoration = false
+# macos-window-shadow = false
+# macos-titlebar-style = native
+
+# Window Dimensions and Padding
+window-height = 27
+window-width = 77
+window-padding-x = 12
+window-padding-y = 12
+
+# Fonts and Text
+# font-family = Lilex
+font-family = Cohere Mono 
+font-size = 15
+window-title-font-family = GalmuriMono7
+title = " "‎
+
+# Cursor and Shell Integration
+cursor-style = block
+shell-integration-features = no-cursor
+cursor-click-to-move = true
+clipboard-read=allow
+clipboard-write=allow
+
+# Visual Enhancements
+# custom-shader = ~/Downloads/MMJ_Cel_Shader.glsl
+window-vsync = true
+unfocused-split-opacity = 1
+# Commented or Optional Settings
+# background-opacity = 0.5
