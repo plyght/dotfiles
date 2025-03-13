@@ -1,0 +1,24 @@
+frame_rate 140
+theme "mellow"
+input_mode "vim"
+# gutter_line_numbers_mode null
+# gutter_line_numbers_style "ascii"
+gutter_symbols false
+enable_terminal_cursor false
+# enable_terminal_color_scheme true
+# highlight_current_line true
+# highlight_current_line_gutter true
+# whitespace_mode "none"
+# inline_diagnostics true
+# animation_min_lag 0
+# animation_max_lag 150
+# enable_format_on_save false
+# default_cursor "default"
+# indent_size 4
+# tab_width 8
+top_bar ""
+bottom_bar "file, mode"
+show_scrollbars false
+show_fileicons false
+# lsp_request_timeout 10
+# include_files ""
