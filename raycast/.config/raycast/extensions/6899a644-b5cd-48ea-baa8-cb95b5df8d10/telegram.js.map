@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/telegram.tsx"],
+  "sourcesContent": ["import { LaunchProps, open } from \"@raycast/api\";\n\nexport default async function Main(props: LaunchProps<{ arguments: Arguments.Telegram }>) {\n  const { username } = props.arguments;\n  await open(`https://t.me/${username}`);\n}\n"],
+  "mappings": "yaAAA,IAAAA,EAAA,GAAAC,EAAAD,EAAA,aAAAE,IAAA,eAAAC,EAAAH,GAAA,IAAAI,EAAkC,wBAElC,eAAOF,EAA4BG,EAAuD,CACxF,GAAM,CAAE,SAAAC,CAAS,EAAID,EAAM,UAC3B,QAAM,QAAK,gBAAgBC,GAAU,CACvC",
+  "names": ["telegram_exports", "__export", "Main", "__toCommonJS", "import_api", "props", "username"]
+}
