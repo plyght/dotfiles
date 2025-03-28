@@ -4,9 +4,9 @@ my personal dotfiles for macOS.
 
 ## Contents
 
-- **flow**: flow  shell configuration
-- **ghostty**: Ghostty terminal configuration
-- **raycast**: Raycast extension configuration
+- **flow**: [Flow Control](https://flow-control.dev/) editor config
+- **ghostty**: [Ghostty](https://ghostty.org/) terminal dots
+- **raycast**: [Raycast](https://raycast.com) extension dots
 
 ## Installation
 
