@@ -16,6 +16,11 @@ Clone this repository to your home directory:
 git clone https://github.com/plyght/dotfiles.git ~/dotfiles
 ```
 
+Then [i] use [Stow](https://www.gnu.org/software/stow/) to symlink to ~/.config (or wherever your config dir is)
+```bash
+stow ghostty & stow raycast & stow flow
+```
+
 ## Usage
 
 Each directory contains dotfiles for specific tools. Follow the individual setup instructions in each directory.
