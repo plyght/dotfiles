@@ -20,5 +20,4 @@ top_bar ""
 bottom_bar "file, mode"
 show_scrollbars false
 show_fileicons false
-# lsp_request_timeout 10
 # include_files ""

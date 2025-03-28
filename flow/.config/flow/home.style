@@ -1,0 +1,5 @@
+# title "Flow Control"
+# subtext "hello, plyght"
+# centered false
+# menu_commands "find_file create_new_file open_file open_recent_project find_in_files open_command_palette select_task add_task open_config open_keybind_config toggle_input_mode change_theme open_help open_version_info quit"
+# include_files ""
