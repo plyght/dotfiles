@@ -23,7 +23,7 @@ stow ghostty & stow raycast & stow flow
 
 ## Usage
 
-Each directory contains dotfiles for specific tools. Follow the individual setup instructions in each directory.
+Each directory contains dotfiles for specific tools. Please follow the individual setup instructions in each directory.
 
 ## Compatible Systems
 
