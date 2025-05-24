@@ -1,0 +1,90 @@
+@import url("https://aushevahmad.github.io/awesome-css/modules/bartender.css");
+:root {
+    --bartender-width: 4ch;  /* Width for displayed icon. Adjust depending on your needs [Default: 4ch] */
+}
+.containerDefault_ae2ea4:hover + .container__342a0, .container__342a0:hover {
+    max-height: 1000px; /* Make the threads Slide down */
+    transition: max-height 1s ease; }
+  
+  .container__342a0 {
+    max-height: 0; /* Initially hide the threads by setting their max-height to 0 */
+    overflow: hidden; 
+    transition: max-height 0.25s ease; }
+    @import url("https://minidiscordthemes.github.io/Snippets/AltTextImprovements/main.css");
+    .buttons_ce5b56 {
+        margin: 6px 6px 6px auto !important;
+        margin-left: auto;
+        max-width: calc(40px * 6); /* CHANGE HERE: 6 columns when expanded */
+        min-width: calc(40px * 2); /* CHANGE HERE: 2 columns when collapsed */
+        width: min-content;
+        display: flex;
+        gap: 6px 0;
+        flex-wrap: wrap-reverse;
+        flex-grow: 1;
+        height: fit-content;
+        justify-content: right;
+    }
+        @import url("https://dablulite.github.io/css-snippets/BetterStatusPicker/import.css");
+        /* Add danger colours to dangerous user actions */
+#user-context-close-dm, #user-context-remove-friend, #user-context-block { color: var(--status-danger) }
+#user-context-close-dm:active, #user-context-remove-friend:active, #user-context-block:active {
+    background-color: var(--red-500)!important;
+    color: var(--white-500)!important;    
+}
+#user-context-close-dm[class*="focused_"], #user-context-remove-friend[class*="focused_"], #user-context-block[class*="focused_"] {
+    background-color: var(--button-danger-background);
+    color: var(--white-500);   
+}
+@import url("https://minidiscordthemes.github.io/FluentStatusIcons/FluentStatusIcons.theme.css");
+@import url(https://seele1306.github.io/Snippets/GuildBoost/import.css);
+:root {
+    --test-color: hsl(244, 67%, 43%);
+    --guildboost-accent-color: 88deg 74% 52%;
+    --guildboost-transparency: 25%;
+}
+@import url(//dablulite.github.io/css-snippets/ServersList/import.css);
+.buttons-uaqb-5>.button-ejjZWC:first-child,
+.link-39sEB3[href="/store"],
+[class*="badgeContainer-"]:has([class*="bogoTrialBadge-"]),
+[class*="giftCodeContainer-"]:first-child,
+[aria-label="Customize your own profile theme, banner, animated avatar, and more with Nitro!"],
+.containerWithMargin-1CVXAM {
+  display: none;
+}
+.panels-3wFtMD .container-YkUktl .flex-2S1XBF {
+    width: fit-content !important; 
+  }
+  
+  .panels-3wFtMD .container-YkUktl .avatarWrapper-1B9FTW {
+    width: 194px;
+    margin-right: 0px !important;
+  }
+  
+  .panels-3wFtMD .container-YkUktl .avatarWrapper-1B9FTW:hover {
+    margin-right: 8px !important;
+  }
+  
+  .panels-3wFtMD .container-YkUktl .flex-2S1XBF button[role="switch"] {
+    width: 0px;
+    overflow: hidden;
+    transition: all 0.3s;
+    left: 16px;
+  }
+  
+  .panels-3wFtMD .container-YkUktl .flex-2S1XBF:hover button[role="switch"] {
+    width: 32px;
+    overflow: visible;
+    transition: all 0.3s;
+    left: 0px;
+  }
+  
+  .panels-3wFtMD .container-YkUktl .flex-2S1XBF:not(:hover) button:not([role="switch"]) svg {
+    rotate: 360deg;
+    transition: rotate 0.3s;
+    background-color: var(--background-secondary-alt); /* might look off with some themes */
+  }
+  
+  .panels-3wFtMD .container-YkUktl .flex-2S1XBF:hover button:not([role="switch"]) svg {
+    rotate: 0deg;
+    transition: rotate 0.3s;
+  }
