@@ -2,7 +2,7 @@
 macos-titlebar-style = hidden
 background-opacity = 1
 background-blur-radius = 50
-theme = zenwritten_dark
+theme = embers-dark
 clipboard-read = allow
 
 # for non-rounded window
