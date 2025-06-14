@@ -4,6 +4,7 @@ my personal dotfiles for macOS.
 
 ## Contents
 
+- **claude**: [Claude Code](https://github.com/anthropics/claude-code) CLI config
 - **equibop**: [Equicord](https://equicord.org/) Discord client config
 - **flow**: [Flow Control](https://flow-control.dev/) editor config
 - **ghostty**: [Ghostty](https://ghostty.org/) terminal dots
@@ -19,7 +20,7 @@ git clone https://github.com/plyght/dotfiles.git ~/dotfiles
 
 Then (_I_) use [Stow](https://www.gnu.org/software/stow/) to symlink to ~/.config (or wherever your config dir is)
 ```bash
-stow equibop & stow ghostty & stow raycast & stow flow
+stow claude & stow equibop & stow ghostty & stow raycast & stow flow
 ```
 
 ## Usage

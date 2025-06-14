@@ -5,3 +5,8 @@ raycast/.config/raycast/config.json
 claude/.claude/local/node_modules/
 claude/.claude/__store.db
 claude/.claude/projects/
+claude/.claude/todos
+claude/.claude/statsig/
+claude/.claude/*.log
+claude/.claude/cache/
+claude/.claude/temp/

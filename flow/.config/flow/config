@@ -1,5 +1,5 @@
 frame_rate 140
-theme "mellow"
+theme "codeschool-dark"
 input_mode "vim"
 # gutter_line_numbers_mode null
 # gutter_line_numbers_style "ascii"
@@ -8,7 +8,7 @@ enable_terminal_cursor false
 # enable_terminal_color_scheme true
 # highlight_current_line true
 # highlight_current_line_gutter true
-# highlight_columns "80 100 120"
+highlight_columns ""
 # highlight_columns_alpha 240
 # whitespace_mode "none"
 # inline_diagnostics true
