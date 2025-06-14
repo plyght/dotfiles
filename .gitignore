@@ -1,4 +1,5 @@
 .DS_Store
+node_modules/
 raycast/.config/raycast/config.json
 
 # Claude - ignore heavy files but keep config
