@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/whatsapp.tsx"],
-  "sourcesContent": ["import { LaunchProps, open } from \"@raycast/api\";\n\nexport default async function Main(props: LaunchProps<{ arguments: Arguments.Whatsapp }>) {\n  const { phone } = props.arguments;\n  await open(`https://api.whatsapp.com/send?phone=${phone}`);\n}\n"],
-  "mappings": "yaAAA,IAAAA,EAAA,GAAAC,EAAAD,EAAA,aAAAE,IAAA,eAAAC,EAAAH,GAAA,IAAAI,EAAkC,wBAElC,eAAOF,EAA4BG,EAAuD,CACxF,GAAM,CAAE,MAAAC,CAAM,EAAID,EAAM,UACxB,QAAM,QAAK,uCAAuCC,GAAO,CAC3D",
-  "names": ["whatsapp_exports", "__export", "Main", "__toCommonJS", "import_api", "props", "phone"]
-}

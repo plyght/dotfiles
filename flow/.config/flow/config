@@ -1,27 +1,147 @@
 frame_rate 140
-theme "codeschool-dark"
+# value type: positive integer
+
+theme "CRT-Gray"
+# value type: quoted string
+
+# light_theme "default-light"
+# value type: quoted string
+
 input_mode "vim"
+# value type: quoted string
+
 # gutter_line_numbers_mode null
+# value type: one of "none", "relative", "absolute" or null
+
 # gutter_line_numbers_style "ascii"
+# value type: one of "ascii", "digital", "subscript", "superscript"
+
 gutter_symbols false
+# value type: true or false
+
 enable_terminal_cursor false
-# enable_terminal_color_scheme true
+# value type: true or false
+
+# enable_terminal_color_scheme false
+# value type: true or false
+
+# enable_modal_dim true
+# value type: true or false
+
 # highlight_current_line true
+# value type: true or false
+
 # highlight_current_line_gutter true
-highlight_columns ""
+# value type: true or false
+
+# highlight_columns [80,100,120]
+# value type: quoted string (u16)
+
 # highlight_columns_alpha 240
-# whitespace_mode "none"
+# value type: positive integer up to 255
+
+# highlight_columns_enabled false
+# value type: true or false
+
+# whitespace_mode "indent"
+# value type: one of "indent", "leading", "eol", "tabs", "visible", "full", "none"
+
 # inline_diagnostics true
+# value type: true or false
+
 # animation_min_lag 0
-# animation_max_lag 150
+# value type: positive integer
+
+# animation_max_lag 50
+# value type: positive integer
+
+# hover_time_ms 500
+# value type: positive integer
+
+# input_idle_time_ms 150
+# value type: positive integer
+
+# idle_actions []
+# value type: list of idle actions
+
 # enable_format_on_save false
+# value type: true or false
+
 # restore_last_cursor_position true
+# value type: true or false
+
+# follow_cursor_on_buffer_switch false
+# value type: true or false
+
 # default_cursor "default"
+# value type: one of "default", "block_blink", "block", "underline_blink", "underline", "beam_blink", "beam"
+
+# enable_auto_save false
+# value type: true or false
+
+# limit_auto_save_file_types null
+# value type: list of quoted strings or null
+
 # indent_size 4
+# value type: positive integer
+
 # tab_width 8
+# value type: positive integer
+
+# indent_mode "auto"
+# value type: one of "auto", "spaces", "tabs"
+
 top_bar ""
-bottom_bar "file, mode"
-show_scrollbars false
-show_fileicons false
+# value type: quoted string
+
+bottom_bar "mode file log"
+# value type: quoted string
+
+# show_scrollbars true
+# value type: true or false
+
+# show_fileicons true
+# value type: true or false
+
+# scrollbar_auto_hide false
+# value type: true or false
+
 # start_debugger_on_crash false
+# value type: true or false
+
+# widget_style "compact"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# palette_style "bars_top_bottom"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# panel_style "compact"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# home_style "bars_top_bottom"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# pane_left_style "bar_right"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# pane_right_style "bar_left"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# pane_style "panel"
+# value type: one of "panel", "editor"
+
+# centered_view false
+# value type: true or false
+
+# centered_view_width 145
+# value type: positive integer
+
+# centered_view_min_screen_width 145
+# value type: positive integer
+
+# lsp_output "quiet"
+# value type: one of "quiet", "verbose"
+
 # include_files ""
+# value type: quoted string
+

@@ -1,8 +1,10 @@
 # Window Appearance
 macos-titlebar-style = hidden
+title = " "
+macos-titlebar-proxy-icon = hidden
 background-opacity = 1
 background-blur-radius = 75
-theme = frontenddelight
+theme = Vague
 clipboard-read = allow
 
 # for non-rounded window
@@ -20,8 +22,7 @@ window-padding-y = 12
 # font-family = Lilex
 font-family = Cohere Mono 
 font-size = 15
-window-title-font-family = GalmuriMono7
-title = " "‎
+
 
 # Cursor and Shell Integration
 cursor-style = block
@@ -37,3 +38,4 @@ unfocused-split-opacity = 1
 # Commented or Optional Settings
 # background-opacity = 0.75
 keybind = shift+enter=text:\n
+macos-icon = xray

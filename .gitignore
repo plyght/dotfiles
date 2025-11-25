@@ -1,13 +1,67 @@
+# System files
 .DS_Store
-node_modules/
-raycast/.config/raycast/config.json
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Claude - ignore heavy files but keep config
-claude/.claude/local/node_modules/
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Raycast - ignore extensions cache and temp files but keep configs
+raycast/.config/raycast/config.json
+raycast/.config/raycast/extensions/[0-9a-fA-F]*-[0-9a-fA-F]*-[0-9a-fA-F]*-[0-9a-fA-F]*-[0-9a-fA-F]*/
+raycast/.config/raycast/extensions/*/
+raycast/.config/raycast/extensions/node_modules
+raycast/.config/raycast/ai/
+
+# Claude - ignore heavy files but keep config (only keep CLAUDE.md)
+claude/.claude/local/
 claude/.claude/__store.db
+claude/.claude/settings.json
+claude/.claude/settings.local.json
+claude/.claude/plugins/
 claude/.claude/projects/
-claude/.claude/todos
+claude/.claude/todos/
 claude/.claude/statsig/
 claude/.claude/*.log
 claude/.claude/cache/
 claude/.claude/temp/
+claude/.claude/shell-snapshots/
+claude/.claude/ide/
+claude/.claude/debug/
+claude/.claude/file-history/
+claude/.claude/history.jsonl
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+
+# Logs
+*.log
+logs/
+
+# Cache directories
+**/cache/
+**/.cache/
+**/temp/
+**/tmp/
+
+# OS generated files
+*.swp
+*.swo
+*~
+
+# IDE files (but keep actual configs)
+.vscode/settings.json
+.vscode/launch.json
+.vscode/.ropeproject
+.idea/workspace.xml
+.idea/tasks.xml
