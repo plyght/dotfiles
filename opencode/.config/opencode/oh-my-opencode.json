@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "agents": {
+    "librarian": {
+      "model": "opencode/big-pickle"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "google/gemini-3-pro-preview"
+    },
+    "document-writer": {
+      "model": "google/gemini-3-flash-preview"
+    },
+    "multimodal-looker": {
+      "model": "google/gemini-3-flash-preview"
+    }
+  }
+}

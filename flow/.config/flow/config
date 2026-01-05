@@ -1,10 +1,10 @@
 frame_rate 140
 # value type: positive integer
 
-theme "CRT-Gray"
+theme "Ghostty"
 # value type: quoted string
 
-# light_theme "default-light"
+# light_theme "ayu-light"
 # value type: quoted string
 
 input_mode "vim"
@@ -44,7 +44,7 @@ enable_terminal_cursor false
 # value type: true or false
 
 # whitespace_mode "indent"
-# value type: one of "indent", "leading", "eol", "tabs", "visible", "full", "none"
+# value type: one of "indent", "leading", "eol", "tabs", "external", "visible", "full", "none"
 
 # inline_diagnostics true
 # value type: true or false
@@ -64,6 +64,9 @@ enable_terminal_cursor false
 # idle_actions []
 # value type: list of idle actions
 
+# idle_commands null
+# value type: list of quoted strings or null
+
 # enable_format_on_save false
 # value type: true or false
 
@@ -76,10 +79,31 @@ enable_terminal_cursor false
 # default_cursor "default"
 # value type: one of "default", "block_blink", "block", "underline_blink", "underline", "beam_blink", "beam"
 
+# modes_can_change_cursor true
+# value type: true or false
+
 # enable_auto_save false
 # value type: true or false
 
 # limit_auto_save_file_types null
+# value type: list of quoted strings or null
+
+# enable_prefix_keyhints true
+# value type: true or false
+
+# enable_auto_find true
+# value type: true or false
+
+# initial_find_query "selection"
+# value type: one of "empty", "selection", "last_query", "selection_or_last_query"
+
+# ignore_filter_stderr false
+# value type: true or false
+
+# auto_run_time_seconds 120
+# value type: positive integer
+
+# auto_run_commands ["save_session_quiet"]
 # value type: list of quoted strings or null
 
 # indent_size 4
@@ -103,16 +127,28 @@ bottom_bar "mode file log"
 # show_fileicons true
 # value type: true or false
 
+# show_local_diagnostics_in_panel false
+# value type: true or false
+
 # scrollbar_auto_hide false
 # value type: true or false
 
 # start_debugger_on_crash false
 # value type: true or false
 
+# completion_trigger "manual"
+# value type: one of "manual", "automatic"
+
+# completion_style "palette"
+# value type: one of "palette", "dropdown"
+
 # widget_style "compact"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
 
 # palette_style "bars_top_bottom"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
+# dropdown_style "compact"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
 
 # panel_style "compact"
@@ -130,6 +166,9 @@ bottom_bar "mode file log"
 # pane_style "panel"
 # value type: one of "panel", "editor"
 
+# hint_window_style "thick_boxed"
+# value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "spacious", "compact"
+
 # centered_view false
 # value type: true or false
 
@@ -141,6 +180,9 @@ bottom_bar "mode file log"
 
 # lsp_output "quiet"
 # value type: one of "quiet", "verbose"
+
+# keybind_mode "normal"
+# value type: one of "normal", "ignore_alt_text_modifiers"
 
 # include_files ""
 # value type: quoted string

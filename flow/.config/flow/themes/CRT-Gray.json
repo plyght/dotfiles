@@ -1,0 +1,441 @@
+{
+  "name": "CRT-Gray",
+  "description": "CRT Gray",
+  "type": "dark",
+  "editor": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_cursor": {
+    "fg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_cursor_primary": {
+    "fg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_cursor_secondary": {
+    "fg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_line_highlight": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 17
+    },
+    "fs": null
+  },
+  "editor_error": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_warning": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_information": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_hint": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_match": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 136
+    },
+    "fs": null
+  },
+  "editor_selection": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "fs": null
+  },
+  "editor_whitespace": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_gutter": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_gutter_active": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_gutter_modified": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_gutter_added": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_gutter_deleted": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_widget": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "editor_widget_border": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 136
+    },
+    "fs": null
+  },
+  "statusbar": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "fs": null
+  },
+  "statusbar_hover": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "scrollbar": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "scrollbar_hover": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "scrollbar_active": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "sidebar": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "panel": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "input": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "input_border": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 136
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "input_placeholder": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 136
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "input_option_active": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 136
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "fs": null
+  },
+  "input_option_hover": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#5A5D5E",
+      "alpha": 128
+    },
+    "fs": null
+  },
+  "tab_active": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 51
+    },
+    "fs": null
+  },
+  "tab_inactive": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 136
+    },
+    "bg": {
+      "color": "#111111",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "tab_selected": {
+    "fg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "bg": {
+      "color": "#BBBBBB",
+      "alpha": 255
+    },
+    "fs": null
+  },
+  "tokens": [
+    {
+      "id": 1,
+      "style": {
+        "fg": {
+          "color": "#BBBBBB",
+          "alpha": 136
+        },
+        "bg": null,
+        "fs": null
+      }
+    },
+    {
+      "id": 209,
+      "style": {
+        "fg": null,
+        "bg": null,
+        "fs": "bold"
+      }
+    },
+    {
+      "id": 144,
+      "style": {
+        "fg": {
+          "color": "#BBBBBB",
+          "alpha": 136
+        },
+        "bg": null,
+        "fs": "underline"
+      }
+    },
+    {
+      "id": 146,
+      "style": {
+        "fg": {
+          "color": "#BBBBBB",
+          "alpha": 136
+        },
+        "bg": null,
+        "fs": null
+      }
+    },
+    {
+      "id": 125,
+      "style": {
+        "fg": {
+          "color": "#BBBBBB",
+          "alpha": 136
+        },
+        "bg": null,
+        "fs": null
+      }
+    },
+    {
+      "id": 0,
+      "style": {
+        "fg": null,
+        "bg": null,
+        "fs": "bold"
+      }
+    }
+  ]
+}

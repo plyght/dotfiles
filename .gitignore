@@ -37,6 +37,9 @@ claude/.claude/ide/
 claude/.claude/debug/
 claude/.claude/file-history/
 claude/.claude/history.jsonl
+claude/.claude/stats-cache.json
+claude/.claude/telemetry/
+claude/.claude/transcripts/
 
 # Temporary files
 *.tmp
