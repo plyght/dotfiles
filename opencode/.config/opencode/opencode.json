@@ -31,7 +31,7 @@
       "name": "Cursor API",
       "options": {
         "baseURL": "http://localhost:18432/v1",
-        "apiKey": "02b428a83833e72765446dc02b6267d5ef329e05378d1f5ad1ee7c19744f50da"
+        "apiKey": ""
       },
       "models": {
         "claude-4-opus-thinking": {
