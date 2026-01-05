@@ -136,10 +136,10 @@ bottom_bar "mode file log"
 # start_debugger_on_crash false
 # value type: true or false
 
-# completion_trigger "manual"
+# completion_trigger "automatic"
 # value type: one of "manual", "automatic"
 
-# completion_style "palette"
+# completion_style "dropdown"
 # value type: one of "palette", "dropdown"
 
 # widget_style "compact"
@@ -183,6 +183,9 @@ bottom_bar "mode file log"
 
 # keybind_mode "normal"
 # value type: one of "normal", "ignore_alt_text_modifiers"
+
+# dropdown_keybinds "standard"
+# value type: one of "standard", "noninvasive"
 
 # include_files ""
 # value type: quoted string

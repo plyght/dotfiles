@@ -8,7 +8,7 @@ my personal dotfiles for macOS.
 - **equibop**: [Equicord](https://equicord.org/) Discord client config
 - **flow**: [Flow Control](https://flow-control.dev/) editor config
 - **ghostty**: [Ghostty](https://ghostty.org/) terminal dots
-- **opencode**: [OhMyOpenCode](https://github.com/code-yeongyu/OhMyOpenCode) agent config
+- **opencode**: [OpenCode](https://github.com/anomalyco/opencode) config
 - **raycast**: [Raycast](https://raycast.com) extension dots
 
 ## Installation
