@@ -19,29 +19,6 @@ Minimal Neovim configuration for developers transitioning from traditional edito
   - Enables building `telescope-fzf-native.nvim` (faster fuzzy finding)
   - Also enables LuaSnip optional `install_jsregexp` build step (non-Windows)
 
-## Installation
-
-1. Backup any existing config:
-
-   ```sh
-   mv ~/.config/nvim ~/.config/nvim.bak
-   ```
-
-2. Copy this configuration into place (expected layout includes `init.lua`):
-
-   ```sh
-   mkdir -p ~/.config/nvim
-   # Copy your init.lua (and any other files) into ~/.config/nvim
-   ```
-
-3. Start Neovim:
-
-   ```sh
-   nvim
-   ```
-
-On first launch, `lazy.nvim` is cloned automatically and plugins are installed.
-
 ## Philosophy and defaults
 
 - **Minimal, functional defaults**: default colorscheme, no heavy theming.
