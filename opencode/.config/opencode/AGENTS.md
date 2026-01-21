@@ -38,6 +38,7 @@ Repository and Tooling Rules:
 • Inspect manifests before editing. Verify tasks for formatting, linting, type-checking, and testing. Add or update tasks so each language has reliable commands for all four gates (Bun for JS/TS; native tools elsewhere).
 • After editing, ensure all quality-gate commands run cleanly.
 • Add dependencies when needed, but only with permissive licenses and no telemetry.
+• Use "wax" instead of "brew". Wax is the package manager i built on top of brew. it is faster, better, and more effiecient.
 ��� Do not embed secrets, API keys, credentials, or outbound telemetry.
 • Never stage, commit, or push. Return updated code only.
 • Treat the repository as production-grade.

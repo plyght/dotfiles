@@ -93,6 +93,55 @@ require('lazy').setup({
       })
       require('mini.move').setup()
       require('mini.files').setup()
+      local starter = require('mini.starter')
+      starter.setup({
+        header = function()
+          local hour = tonumber(os.date('%H'))
+          local greeting = 'Good evening'
+          if hour < 12 then
+            greeting = 'Good morning'
+          elseif hour < 18 then
+            greeting = 'Good afternoon'
+          end
+          return greeting .. ', plyght'
+        end,
+        items = {
+          starter.sections.builtin_actions(),
+          function()
+            local cwd = vim.fn.getcwd()
+            local files = vim.fn.readdir(cwd)
+            
+            local file_data = {}
+            for _, file in ipairs(files) do
+              if not file:match('^%.') then
+                local full_path = cwd .. '/' .. file
+                local mtime = vim.fn.getftime(full_path)
+                table.insert(file_data, { name = file, path = full_path, mtime = mtime })
+              end
+            end
+            
+            table.sort(file_data, function(a, b) return a.mtime > b.mtime end)
+            
+            local items = {}
+            for i = 1, math.min(6, #file_data) do
+              local file = file_data[i]
+              local is_dir = vim.fn.isdirectory(file.path) == 1
+              table.insert(items, {
+                action = function()
+                  if vim.fn.isdirectory(file.path) == 1 then
+                    require('mini.files').open(file.path)
+                  else
+                    vim.cmd('edit ' .. vim.fn.fnameescape(file.path))
+                  end
+                end,
+                name = file.name .. (is_dir and '/' or ''),
+                section = 'Current Directory',
+              })
+            end           
+            return items
+          end,
+        },
+      })
       
       vim.keymap.set('n', '<leader>e', function() require('mini.files').open(vim.api.nvim_buf_get_name(0)) end, { desc = 'File [E]xplorer' })
     end,
@@ -140,7 +189,6 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -191,13 +239,8 @@ require('lazy').setup({
       
       require('mason').setup()
       
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua',
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-      
       require('mason-lspconfig').setup {
+        ensure_installed = vim.tbl_keys(servers or {}),
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -205,6 +248,23 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
+      }
+    end,
+  },
+  
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+    },
+    event = 'VeryLazy',
+    config = function()
+      require('mason-tool-installer').setup {
+        ensure_installed = {
+          'stylua',
+        },
+        run_on_start = true,
       }
     end,
   },
@@ -274,29 +334,7 @@ require('lazy').setup({
     },
   },
   
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-    },
-    cmd = 'Neotree',
-    keys = {
-      { '<leader>t', '<cmd>Neotree toggle<CR>', desc = 'Toggle file [T]ree' },
-    },
-    opts = {
-      filesystem = {
-        follow_current_file = { enabled = true },
-        hijack_netrw_behavior = 'open_current',
-      },
-      window = {
-        position = 'left',
-        width = 30,
-      },
-    },
-  },
-  
+
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',
@@ -335,7 +373,12 @@ require('lazy').setup({
       },
     },
     config = function()
-      vim.g.opencode_opts = {}
+      vim.g.opencode_opts = {
+        port = nil,
+        provider = {
+          enabled = false,
+        },
+      }
       
       vim.o.autoread = true
       
