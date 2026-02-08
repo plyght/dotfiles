@@ -138,7 +138,22 @@
       }
     }
   },
-  "mcp": {  
+  "tui": {
+    "scroll_acceleration": {
+      "enabled": true
+    }
+  },
+  "mcp": {
+    "ui-layouts-mcp": {
+      "type": "local",
+      "command": ["bunx", "@ui-layouts/mcp"],
+      "enabled": false
+    },
+    "agentation": {
+      "type": "local",
+      "command": ["bunx", "agentation-mcp", "server"],
+      "enabled": false
+    }
   },
   "plugin": [
     "oh-my-opencode@latest",

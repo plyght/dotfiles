@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start</title>
+  <script src="https://cdn.jsdelivr.net/npm/fengari-web@0.1.4/dist/fengari-web.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a1a;
+      color: #c0c0c0;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .header {
+      font-size: 16px;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      color: #6c6c6c;
+      font-size: 12px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .item {
+      padding: 0.3rem 0;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .item:hover {
+      color: #ffffff;
+    }
+
+    .item-key {
+      color: #808080;
+      margin-right: 0.5rem;
+    }
+
+    .item-name {
+      color: #c0c0c0;
+    }
+
+    .item:hover .item-name {
+      color: #ffffff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header" id="header"></div>
+    <div id="content"></div>
+  </div>
+
+  <script type="application/lua">
+    local websites = {
+      { name = "GitHub", url = "https://github.com" },
+      { name = "Gmail", url = "https://mail.google.com" },
+      { name = "YouTube", url = "https://youtube.com" },
+      { name = "Reddit", url = "https://reddit.com" },
+      { name = "Twitter", url = "https://twitter.com" },
+      { name = "Hacker News", url = "https://news.ycombinator.com" },
+    }
+
+    local function get_greeting()
+      local hour = tonumber(os.date('%H'))
+      local greeting = 'Good evening'
+      if hour < 12 then
+        greeting = 'Good morning'
+      elseif hour < 18 then
+        greeting = 'Good afternoon'
+      end
+      return greeting .. ', plyght'
+    end
+
+    local function get_builtin_actions()
+      return {
+        { name = "New file", action = "edit", key = "e" },
+        { name = "Quit", action = "quit", key = "q" },
+      }
+    end
+
+    local function get_websites_items()
+      local items = {}
+      for i, site in ipairs(websites) do
+        table.insert(items, {
+          name = site.name,
+          url = site.url,
+          section = 'Frequently Visited',
+        })
+      end
+      return items
+    end
+
+    local function render()
+      local header = get_greeting()
+      local actions = get_builtin_actions()
+      local sites = get_websites_items()
+      
+      local js = require("js")
+      local document = js.global.document
+      
+      document:getElementById("header").textContent = header
+      
+      local content = document:getElementById("content")
+      content.innerHTML = ""
+      
+      local actionsSection = document:createElement("div")
+      actionsSection.className = "section"
+      
+      local actionsTitle = document:createElement("div")
+      actionsTitle.className = "section-title"
+      actionsTitle.textContent = "Built-in actions"
+      actionsSection:appendChild(actionsTitle)
+      
+      for i, action in ipairs(actions) do
+        local item = document:createElement("div")
+        item.className = "item"
+        
+        local key = document:createElement("span")
+        key.className = "item-key"
+        key.textContent = "[" .. action.key .. "]"
+        
+        local name = document:createElement("span")
+        name.className = "item-name"
+        name.textContent = action.name
+        
+        item:appendChild(key)
+        item:appendChild(name)
+        actionsSection:appendChild(item)
+      end
+      
+      content:appendChild(actionsSection)
+      
+      local sitesSection = document:createElement("div")
+      sitesSection.className = "section"
+      
+      local sitesTitle = document:createElement("div")
+      sitesTitle.className = "section-title"
+      sitesTitle.textContent = "Frequently Visited"
+      sitesSection:appendChild(sitesTitle)
+      
+      for i, site in ipairs(sites) do
+        local item = document:createElement("div")
+        item.className = "item"
+        
+        local link = document:createElement("a")
+        link.href = site.url
+        link.target = "_blank"
+        
+        local key = document:createElement("span")
+        key.className = "item-key"
+        key.textContent = "[" .. tostring(i) .. "]"
+        
+        local name = document:createElement("span")
+        name.className = "item-name"
+        name.textContent = site.name
+        
+        link:appendChild(key)
+        link:appendChild(name)
+        item:appendChild(link)
+        sitesSection:appendChild(item)
+      end
+      
+      content:appendChild(sitesSection)
+    end
+
+    render()
+  </script>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key >= '1' && e.key <= '9') {
+        const links = document.querySelectorAll('.item a[href]');
+        const index = parseInt(e.key) - 1;
+        if (links[index]) {
+          window.open(links[index].href, '_blank');
+        }
+      } else if (e.key === 'e') {
+        alert('New file action (not implemented in web version)');
+      } else if (e.key === 'q') {
+        window.close();
+      }
+    });
+  </script>
+</body>
+</html>
