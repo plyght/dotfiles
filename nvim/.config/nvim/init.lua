@@ -21,6 +21,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
+vim.opt.laststatus = 3
 vim.opt.fillchars = { eob = " " }
 
 vim.api.nvim_create_autocmd('ColorScheme', {
@@ -327,7 +328,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'lua', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'lua', 'markdown', 'markdown_inline', 'vim', 'vimdoc' },
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
@@ -345,6 +346,59 @@ require('lazy').setup({
     opts = {},
   },
   
+  {
+    "yetone/avante.nvim",
+    build = "make",
+    event = "VeryLazy",
+    version = false,
+    opts = {
+      provider = "claude-code",
+      providers = {
+        claude = {
+          endpoint = "https://api.anthropic.com",
+          model = "claude-sonnet-4-20250514",
+          timeout = 30000,
+          extra_request_body = {
+            temperature = 0.75,
+            max_tokens = 20480,
+          },
+        },
+      },
+      acp_providers = {
+        ["claude-code"] = {
+          command = "npx",
+          args = { "@anthropic-ai/claude-code", "--chat" },
+          env = {
+            NODE_NO_WARNINGS = "1",
+            ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") or "",
+          },
+        },
+        ["gemini-cli"] = {
+          command = "gemini",
+          args = { "--experimental-acp" },
+          env = {
+            NODE_NO_WARNINGS = "1",
+            GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or "",
+          },
+        },
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-telescope/telescope.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-tree/nvim-web-devicons",
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
+
   {
     'NickvanDyke/opencode.nvim',
     dependencies = {

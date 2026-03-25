@@ -1,10 +1,14 @@
 {
   "lastChangelogVersion": "0.62.0",
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultProvider": "acp-cursor",
+  "defaultModel": "composer-2[fast=true]",
   "defaultThinkingLevel": "low",
   "quietStartup": true,
-  "extensions": ["./extensions/footer.ts", "./extensions/acp-client.ts"],
+  "extensions": [
+    "./extensions/footer.ts",
+    "./extensions/acp-client.ts",
+    "./extensions/pi-tool-display/index.ts"
+  ],
   "packages": [
     "npm:pi-subagents",
     "npm:pi-web-access",
