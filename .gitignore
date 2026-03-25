@@ -41,6 +41,10 @@ claude/.claude/stats-cache.json
 claude/.claude/telemetry/
 claude/.claude/transcripts/
 
+# Pi - ignore auth and sessions
+pi/.pi/agent/auth.json
+pi/.pi/agent/sessions/
+
 # Temporary files
 *.tmp
 *.temp
