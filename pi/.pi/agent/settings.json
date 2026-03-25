@@ -1,0 +1,13 @@
+{
+  "lastChangelogVersion": "0.62.0",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-6",
+  "defaultThinkingLevel": "low",
+  "quietStartup": true,
+  "extensions": ["./extensions/footer.ts"],
+  "packages": [
+    "npm:pi-subagents",
+    "npm:pi-web-access",
+    "npm:pi-extmgr"
+  ]
+}
