@@ -59,8 +59,7 @@ Notable editor options:
 | `nvim-treesitter/nvim-treesitter` | Syntax highlighting/indent based on Treesitter. |
 | `nvim-neo-tree/neo-tree.nvim` | Optional file tree explorer (`:Neotree`). |
 | `folke/trouble.nvim` | Diagnostics list UI (`:Trouble`). |
-| `NickvanDyke/opencode.nvim` | AI assistance integrated into Neovim. |
-| `folke/snacks.nvim` | UI primitives used by opencode (input/picker/terminal/notifier/etc.). |
+| `pablopunk/pi.nvim` | Minimal AI assistant integration for pi. |
 
 ## Keybindings
 
@@ -156,34 +155,27 @@ Powered by `nvim-cmp`.
 | Insert/Select | `<C-l>` | Expand/jump forward in snippet (LuaSnip). |
 | Insert/Select | `<C-h>` | Jump backward in snippet (LuaSnip). |
 
-### AI (opencode.nvim)
+### AI (pi.nvim)
 
-This configuration integrates `opencode.nvim` and defines both commands and keymaps.
+This configuration integrates `pi.nvim` and defines a few convenience keymaps.
 
 #### Keybindings
 
 | Mode | Key | Action |
 |---|---|---|
-| Normal/Visual | `<C-a>` | Ask opencode about the current context (`@this:`) and submit immediately. |
-| Normal/Terminal | `<C-.>` | Toggle the opencode terminal UI. |
-| Normal/Visual | `go` | Operator: add a range to opencode context (`@this`). |
-| Normal | `goo` | Operator: add the current line to opencode context (`@this`). |
-| Normal | `<S-C-u>` | opencode command: session half page up. |
-| Normal | `<S-C-d>` | opencode command: session half page down. |
+| Normal | `<leader>ai` | Ask pi with the current buffer as context. |
+| Visual | `<leader>ai` | Ask pi with the current selection as additional context. |
+| Normal | `<leader>ac` | Cancel the active pi request. |
+| Normal | `<leader>al` | Open the pi session log. |
 
 #### Commands
 
 | Command | Action |
 |---|---|
-| `:OCSelect` | Select an opencode action. |
-| `:OCAsk` | Open an ask prompt prefilled with `@this:` (does not auto-submit). |
-| `:OCToggle` | Toggle the opencode terminal. |
-| `:OCReview` | Prompt: review. |
-| `:OCFix` | Prompt: fix (diagnostics). |
-| `:OCExplain` | Prompt: explain. |
-| `:OCTest` | Prompt: test. |
-| `:OCDocument` | Prompt: document. |
-| `:OCOptimize` | Prompt: optimize. |
+| `:PiAsk` | Prompt for input, sends it + current buffer as context. |
+| `:PiAskSelection` | Same as `:PiAsk` but also sends the selected lines. |
+| `:PiCancel` | Cancel the active pi request immediately. |
+| `:PiLog` | Open the session log in a new split. |
 
 ## Language support
 

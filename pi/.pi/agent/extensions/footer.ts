@@ -10,6 +10,7 @@ export default function footer(pi: ExtensionAPI) {
   let contextPercent: number | null = null;
   let subagentCount = 0;
   let footerSet = false;
+  let totalTokens = 0;
 
   function updateModel(ctx: { model: any; getContextUsage(): any }) {
     const m = ctx.model;
@@ -22,6 +23,7 @@ export default function footer(pi: ExtensionAPI) {
     if (usage) {
       contextPercent = usage.percent;
       contextWindow = usage.contextWindow || contextWindow;
+      if (usage.totalTokens) totalTokens = usage.totalTokens;
     }
   }
 
@@ -46,6 +48,11 @@ export default function footer(pi: ExtensionAPI) {
               : `${Math.round(contextWindow / 1000)}k`;
             const pct = contextPercent !== null ? `${Math.round(contextPercent)}%` : "–";
             parts.push(theme.fg("muted", `${pct}·${windowK}`));
+          }
+
+          if (totalTokens > 0) {
+            const tk = totalTokens >= 1000 ? `${(totalTokens / 1000).toFixed(1)}k` : `${totalTokens}`;
+            parts.push(theme.fg("dim", `${tk}tok`));
           }
 
           if (subagentCount > 0) {

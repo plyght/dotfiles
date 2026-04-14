@@ -1,17 +1,30 @@
 {
-  "lastChangelogVersion": "0.62.0",
-  "defaultProvider": "acp-cursor",
-  "defaultModel": "composer-2[fast=true]",
+  "lastChangelogVersion": "0.67.1",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-5.4-mini",
   "defaultThinkingLevel": "low",
   "quietStartup": true,
   "extensions": [
     "./extensions/footer.ts",
-    "./extensions/acp-client.ts",
-    "./extensions/pi-tool-display/index.ts"
+    "./extensions/todo/index.ts"
   ],
   "packages": [
     "npm:pi-subagents",
     "npm:pi-web-access",
-    "npm:pi-extmgr"
-  ]
+    "npm:@burneikis/pi-vim",
+    "npm:pi-rewind",
+    "npm:pi-collapse-tools",
+    "npm:pi-fff",
+    "npm:@aliou/pi-processes",
+    "npm:pi-btw",
+    "npm:pi-ask-user",
+    "npm:@samfp/pi-memory"
+  ],
+  "disabledExtensions": [
+    "npm:pi-hooks/permission/permission.ts"
+  ],
+  "permissionLevel": "high",
+  "collapseChangelog": true,
+  "enableInstallTelemetry": false,
+  "doubleEscapeAction": "tree"
 }

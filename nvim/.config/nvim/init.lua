@@ -22,7 +22,8 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.opt.laststatus = 3
-vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars = { eob = " ", stl = " ", stlnc = " " }
+vim.opt.statusline = "  %#StatusLineDim#%f%#StatusLineAccent#%m %= %#StatusLineDim#%y  %l:%c  "
 
 vim.api.nvim_create_autocmd('ColorScheme', {
   pattern = '*',
@@ -30,6 +31,16 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE', ctermbg = 'NONE' })
     vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE', ctermbg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', fg = '#6c7086' })
+    vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', fg = '#313244' })
+    vim.api.nvim_set_hl(0, 'StatusLineDim', { bg = 'NONE', fg = '#585b70' })
+    vim.api.nvim_set_hl(0, 'StatusLineAccent', { bg = 'NONE', fg = '#89b4fa' })
+    vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = '#6c7086', bold = false })
+    vim.api.nvim_set_hl(0, 'MiniStarterFooter', { fg = '#45475a' })
+    vim.api.nvim_set_hl(0, 'MiniStarterItem', { fg = '#cdd6f4' })
+    vim.api.nvim_set_hl(0, 'MiniStarterSection', { fg = '#45475a' })
+    vim.api.nvim_set_hl(0, 'MiniStarterCurrent', { fg = '#89b4fa', bold = true })
+    vim.api.nvim_set_hl(0, 'MiniStarterItemPrefix', { fg = '#585b70' })
   end,
 })
 
@@ -53,6 +64,45 @@ vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy' })
 vim.keymap.set('n', '<C-v>', '"+p', { desc = 'Paste' })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { desc = 'Paste' })
 vim.keymap.set('v', '<C-x>', '"+d', { desc = 'Cut' })
+
+local function snacks_call(fn)
+  local ok, snacks = pcall(require, 'snacks')
+  if not ok then
+    vim.notify('Snacks is not available', vim.log.levels.WARN)
+    return
+  end
+
+  fn(snacks)
+end
+
+local function snacks_commands()
+  snacks_call(function(snacks)
+    snacks.picker.commands({
+      confirm = function(picker, item)
+        picker:close()
+        vim.schedule(function()
+          vim.cmd(item.text or item.cmd or item.name)
+        end)
+      end,
+    })
+  end)
+end
+
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-p>', function() snacks_call(function(snacks) snacks.picker.files() end) end, { desc = 'Find files' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-S-p>', snacks_commands, { desc = 'Command palette' })
+vim.keymap.set('n', '<C-p>', function() snacks_call(function(snacks) snacks.picker.files() end) end, { desc = 'Find files' })
+vim.keymap.set('n', '<C-S-p>', snacks_commands, { desc = 'Command palette' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-S-f>', function() snacks_call(function(snacks) snacks.picker.grep() end) end, { desc = 'Grep workspace' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-b>', function() snacks_call(function(snacks) snacks.explorer() end) end, { desc = 'Toggle sidebar' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-e>', function() snacks_call(function(snacks) snacks.picker.buffers() end) end, { desc = 'Switch buffer' })
+vim.keymap.set({ 'n', 'i' }, '<D-s>', '<Esc><cmd>w<CR>', { desc = 'Save' })
+vim.keymap.set({ 'n', 'i' }, '<D-z>', '<Esc>ua', { desc = 'Undo' })
+vim.keymap.set({ 'n', 'i' }, '<D-S-z>', '<Esc><C-r>a', { desc = 'Redo' })
+vim.keymap.set('v', '<D-c>', '"+y', { desc = 'Copy' })
+vim.keymap.set({ 'n', 'i' }, '<D-v>', '<C-r>+', { desc = 'Paste' })
+vim.keymap.set('n', '<D-/>', 'gcc', { remap = true, desc = 'Toggle comment' })
+vim.keymap.set('v', '<D-/>', 'gc', { remap = true, desc = 'Toggle comment' })
+vim.keymap.set({ 'n', 'i' }, '<D-w>', '<cmd>bd<CR>', { desc = 'Close buffer' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
@@ -88,59 +138,48 @@ require('lazy').setup({
       require('mini.surround').setup()
       require('mini.pairs').setup()
       require('mini.ai').setup()
-      require('mini.indentscope').setup({
-        symbol = '│',
-        options = { try_as_border = true },
-      })
       require('mini.move').setup()
       require('mini.files').setup()
       local starter = require('mini.starter')
       starter.setup({
         header = function()
           local hour = tonumber(os.date('%H'))
-          local greeting = 'Good evening'
+          local greeting = 'evening'
           if hour < 12 then
-            greeting = 'Good morning'
+            greeting = 'morning'
           elseif hour < 18 then
-            greeting = 'Good afternoon'
+            greeting = 'afternoon'
           end
-          return greeting .. ', plyght'
+          return 'good ' .. greeting .. ', plyght'
         end,
+        footer = '',
         items = {
-          starter.sections.builtin_actions(),
           function()
-            local cwd = vim.fn.getcwd()
-            local files = vim.fn.readdir(cwd)
-            
-            local file_data = {}
-            for _, file in ipairs(files) do
-              if not file:match('^%.') then
-                local full_path = cwd .. '/' .. file
-                local mtime = vim.fn.getftime(full_path)
-                table.insert(file_data, { name = file, path = full_path, mtime = mtime })
+            local cwd = vim.loop.fs_realpath(vim.fn.getcwd()) or vim.fn.getcwd()
+            local seen = {}
+            local items = {}
+            for _, raw in ipairs(vim.v.oldfiles) do
+              local path = vim.loop.fs_realpath(raw)
+              if path and not seen[path] and vim.startswith(path, cwd .. '/') and vim.fn.filereadable(path) == 1 then
+                seen[path] = true
+                local rel = path:sub(#cwd + 2)
+                table.insert(items, {
+                  action = 'edit ' .. vim.fn.fnameescape(raw),
+                  name = rel,
+                  section = '',
+                })
+                if #items >= 5 then break end
               end
             end
-            
-            table.sort(file_data, function(a, b) return a.mtime > b.mtime end)
-            
-            local items = {}
-            for i = 1, math.min(6, #file_data) do
-              local file = file_data[i]
-              local is_dir = vim.fn.isdirectory(file.path) == 1
-              table.insert(items, {
-                action = function()
-                  if vim.fn.isdirectory(file.path) == 1 then
-                    require('mini.files').open(file.path)
-                  else
-                    vim.cmd('edit ' .. vim.fn.fnameescape(file.path))
-                  end
-                end,
-                name = file.name .. (is_dir and '/' or ''),
-                section = 'Current Directory',
-              })
-            end           
+            if #items == 0 then
+              table.insert(items, { action = 'enew', name = 'new file', section = '' })
+            end
             return items
           end,
+        },
+        content_hooks = {
+          starter.gen_hook.adding_bullet('  '),
+          starter.gen_hook.aligning('center', 'center'),
         },
       })
       
@@ -174,12 +213,7 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'projects')
       
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
-      vim.keymap.set('n', '<C-S-p>', builtin.commands, { desc = 'Command palette' })
       vim.keymap.set('n', '<leader>fp', function() require('telescope').extensions.projects.projects {} end, { desc = '[F]ind [P]rojects' })
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
     end,
@@ -347,116 +381,83 @@ require('lazy').setup({
   },
   
   {
-    "yetone/avante.nvim",
-    build = "make",
-    event = "VeryLazy",
-    version = false,
+    'folke/snacks.nvim',
+    lazy = false,
+    priority = 1000,
     opts = {
-      provider = "claude-code",
-      providers = {
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-sonnet-4-20250514",
-          timeout = 30000,
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
-          },
+      explorer = {},
+      picker = {},
+    },
+  },
+  
+  {
+    'yetone/avante.nvim',
+    build = 'make',
+    event = 'VeryLazy',
+    version = false,
+    keys = {
+      { '<leader>aa', '<cmd>AvanteAsk<CR>', desc = '[A]vante [A]sk' },
+      { '<leader>ae', '<cmd>AvanteEdit<CR>', desc = '[A]vante [E]dit', mode = 'v' },
+      { '<leader>at', '<cmd>AvanteToggle<CR>', desc = '[A]vante [T]oggle' },
+      { '<leader>ar', '<cmd>AvanteRefresh<CR>', desc = '[A]vante [R]efresh' },
+      { '<leader>ac', '<cmd>AvanteClear<CR>', desc = '[A]vante [C]lear' },
+    },
+    opts = {
+      provider = 'claude-code',
+      hints = { enabled = false },
+      mappings = {
+        submit = {
+          normal = '<CR>',
+          insert = '<CR>',
+        },
+        cancel = {
+          normal = { '<C-c>', 'q' },
+          insert = { '<C-c>' },
+        },
+        sidebar = {
+          switch_windows = '<Tab>',
+          reverse_switch_windows = '<S-Tab>',
+          close = { 'q' },
         },
       },
+      windows = {
+        width = 55,
+        sidebar_header = { enabled = true },
+        ask = { floating = true },
+      },
       acp_providers = {
-        ["claude-code"] = {
-          command = "npx",
-          args = { "@anthropic-ai/claude-code", "--chat" },
-          env = {
-            NODE_NO_WARNINGS = "1",
-            ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") or "",
-          },
+        ['claude-code'] = {
+          command = 'bunx',
+          args = { '@anthropic-ai/claude-code', '--chat' },
+          env = { NODE_NO_WARNINGS = '1' },
         },
-        ["gemini-cli"] = {
-          command = "gemini",
-          args = { "--experimental-acp" },
-          env = {
-            NODE_NO_WARNINGS = "1",
-            GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or "",
-          },
+        ['gemini-cli'] = {
+          command = 'gemini',
+          args = { '--experimental-acp' },
+          env = { NODE_NO_WARNINGS = '1' },
         },
       },
     },
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-telescope/telescope.nvim",
-      "hrsh7th/nvim-cmp",
-      "nvim-tree/nvim-web-devicons",
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons',
       {
         'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
+        opts = { file_types = { 'markdown', 'Avante' } },
+        ft = { 'markdown', 'Avante' },
       },
     },
   },
 
   {
-    'NickvanDyke/opencode.nvim',
-    dependencies = {
-      { 
-        'folke/snacks.nvim', 
-        opts = { 
-          input = {},
-          picker = {},
-          terminal = {},
-          notifier = {
-            enabled = true,
-            timeout = 3000,
-          },
-          scroll = { enabled = true },
-          indent = { 
-            enabled = true,
-            animate = { enabled = false },
-          },
-          scope = { enabled = true },
-          statuscolumn = { enabled = true },
-          words = { enabled = true },
-          dashboard = {
-            enabled = false,
-          },
-        },
-      },
-    },
+    'pablopunk/pi.nvim',
     config = function()
-      vim.g.opencode_opts = {
-        port = nil,
-        provider = {
-          enabled = false,
-        },
-      }
-      
-      vim.o.autoread = true
-      
-      vim.api.nvim_create_user_command('OCSelect', function() require('opencode').select() end, { desc = 'Opencode: Select action' })
-      vim.api.nvim_create_user_command('OCAsk', function() require('opencode').ask('@this: ', { submit = false }) end, { desc = 'Opencode: Ask' })
-      vim.api.nvim_create_user_command('OCToggle', function() require('opencode').toggle() end, { desc = 'Opencode: Toggle terminal' })
-      vim.api.nvim_create_user_command('OCReview', function() require('opencode').prompt('review') end, { desc = 'Opencode: Review code' })
-      vim.api.nvim_create_user_command('OCFix', function() require('opencode').prompt('fix') end, { desc = 'Opencode: Fix diagnostics' })
-      vim.api.nvim_create_user_command('OCExplain', function() require('opencode').prompt('explain') end, { desc = 'Opencode: Explain code' })
-      vim.api.nvim_create_user_command('OCTest', function() require('opencode').prompt('test') end, { desc = 'Opencode: Add tests' })
-      vim.api.nvim_create_user_command('OCDocument', function() require('opencode').prompt('document') end, { desc = 'Opencode: Add documentation' })
-      vim.api.nvim_create_user_command('OCOptimize', function() require('opencode').prompt('optimize') end, { desc = 'Opencode: Optimize code' })
-      
-      vim.keymap.set({ 'n', 'x' }, '<C-a>', function() require('opencode').ask('@this: ', { submit = true }) end, { desc = 'Ask opencode' })
-      vim.keymap.set({ 'n', 't' }, '<C-.>', function() require('opencode').toggle() end, { desc = 'Toggle opencode' })
-      
-      vim.keymap.set({ 'n', 'x' }, 'go', function() return require('opencode').operator('@this ') end, { expr = true, desc = 'Add range to opencode' })
-      vim.keymap.set('n', 'goo', function() return require('opencode').operator('@this ') .. '_' end, { expr = true, desc = 'Add line to opencode' })
-      
-      vim.keymap.set('n', '<S-C-u>', function() require('opencode').command('session.half.page.up') end, { desc = 'opencode half page up' })
-      vim.keymap.set('n', '<S-C-d>', function() require('opencode').command('session.half.page.down') end, { desc = 'opencode half page down' })
-      
-      vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
-      vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
+      require('pi').setup()
+
+      vim.keymap.set('n', '<leader>ai', '<cmd>PiAsk<CR>', { desc = 'Ask pi' })
+      vim.keymap.set('v', '<leader>ai', '<cmd>PiAskSelection<CR>', { desc = 'Ask pi (selection)' })
+      vim.keymap.set('n', '<leader>ac', '<cmd>PiCancel<CR>', { desc = 'Cancel pi request' })
+      vim.keymap.set('n', '<leader>al', '<cmd>PiLog<CR>', { desc = 'Open pi log' })
     end,
   },
 }, {

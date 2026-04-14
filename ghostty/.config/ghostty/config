@@ -2,7 +2,7 @@
 macos-titlebar-style = hidden
 title = " "
 macos-titlebar-proxy-icon = hidden
-background-opacity = 1
+background-opacity = 0.75
 background-blur-radius = 75
 theme = Vague
 clipboard-read = allow

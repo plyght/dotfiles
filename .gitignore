@@ -22,6 +22,13 @@ raycast/.config/raycast/ai/
 
 # Claude - ignore heavy files but keep config (only keep CLAUDE.md)
 claude/.claude/local/
+claude/.claude/backups/
+claude/.claude/paste-cache/
+claude/.claude/plans/
+claude/.claude/sessions/
+claude/.claude/tasks/
+claude/.claude/readout-cost-cache.json
+claude/.claude/readout-pricing.json
 claude/.claude/__store.db
 claude/.claude/settings.json
 claude/.claude/settings.local.json
@@ -41,9 +48,15 @@ claude/.claude/stats-cache.json
 claude/.claude/telemetry/
 claude/.claude/transcripts/
 
-# Pi - ignore auth and sessions
+# Pi - ignore auth, sessions, history, and per-extension working data
 pi/.pi/agent/auth.json
+pi/.pi/agent/auth.json.lock
 pi/.pi/agent/sessions/
+pi/.pi/agent/run-history.jsonl
+pi/.pi/agent/memory/
+pi/.pi/agent/.extmgr-cache/
+pi/.pi/agent/pi-fff/
+pi/.pi/agent/pi-pretty/
 
 # Temporary files
 *.tmp
