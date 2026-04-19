@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@opencode-ai/plugin": "0.0.0-beta-202604081357",
+    "@opencode-ai/plugin": "1.4.0",
     "opencode-browser": "file:/Users/nicojaffer/opencode-browser",
     "opencode-openai-codex-auth": "code-yeongyu/opencode-openai-codex-auth#fix/orphaned-function-call-output-with-tools"
   }

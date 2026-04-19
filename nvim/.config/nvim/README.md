@@ -109,7 +109,7 @@ Notes:
 | Normal | `<leader>e` | Open Mini Files explorer at current file. |
 | Normal | `<leader>t` | Toggle Neo-tree file tree (`:Neotree toggle`). |
 | Normal | `<C-p>` | Find files (Telescope). |
-| Normal | `<C-S-p>` | Command palette (Telescope commands). |
+| Normal | `<C-S-p>` | Command palette (Pulse). |
 | Normal | `<leader>ff` | Find files (Telescope). |
 | Normal | `<leader>fg` | Live grep (Telescope). |
 | Normal | `<leader>fb` | Buffers (Telescope). |

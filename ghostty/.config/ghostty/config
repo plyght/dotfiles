@@ -2,9 +2,9 @@
 macos-titlebar-style = hidden
 title = " "
 macos-titlebar-proxy-icon = hidden
-background-opacity = 0.75
-background-blur-radius = 75
-theme = Vague
+background-opacity = 1
+# background-blur-radius = 75
+theme = idea-soft-blue
 clipboard-read = allow
 
 # for non-rounded window

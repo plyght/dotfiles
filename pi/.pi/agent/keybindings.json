@@ -1,0 +1,13 @@
+{
+  "tui.editor.undo": ["ctrl+z", "ctrl+-"],
+  "tui.editor.yank": ["ctrl+y"],
+  "app.model.select": ["ctrl+shift+p", "ctrl+l"],
+  "app.session.tree": ["ctrl+p"],
+  "app.tools.expand": ["ctrl+b", "ctrl+o"],
+  "app.thinking.toggle": ["ctrl+shift+t", "ctrl+t"],
+  "app.thinking.cycle": ["shift+tab"],
+  "app.interrupt": ["escape"],
+  "app.clear": ["ctrl+c"],
+  "app.exit": ["ctrl+d"],
+  "app.editor.external": ["ctrl+g"]
+}

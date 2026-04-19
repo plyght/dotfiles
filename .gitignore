@@ -57,6 +57,11 @@ pi/.pi/agent/memory/
 pi/.pi/agent/.extmgr-cache/
 pi/.pi/agent/pi-fff/
 pi/.pi/agent/pi-pretty/
+# Vendored npm packages produced by localize-pi-packages.mjs (node_modules-equivalent)
+pi/.pi/agent/extensions/local-packages/
+
+# Claude - ignore MCP auth cache (machine-local state)
+claude/.claude/mcp-needs-auth-cache.json
 
 # Temporary files
 *.tmp

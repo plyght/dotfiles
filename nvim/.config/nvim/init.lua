@@ -23,7 +23,7 @@ vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.opt.laststatus = 3
 vim.opt.fillchars = { eob = " ", stl = " ", stlnc = " " }
-vim.opt.statusline = "  %#StatusLineDim#%f%#StatusLineAccent#%m %= %#StatusLineDim#%y  %l:%c  "
+vim.opt.statusline = "%{%(&filetype==#'ministarter')?'':'  %#StatusLineDim#%f%#StatusLineAccent#%m %= %#StatusLineDim#%y  %l:%c  '%}"
 
 vim.api.nvim_create_autocmd('ColorScheme', {
   pattern = '*',
@@ -65,36 +65,13 @@ vim.keymap.set('n', '<C-v>', '"+p', { desc = 'Paste' })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { desc = 'Paste' })
 vim.keymap.set('v', '<C-x>', '"+d', { desc = 'Cut' })
 
-local function snacks_call(fn)
-  local ok, snacks = pcall(require, 'snacks')
-  if not ok then
-    vim.notify('Snacks is not available', vim.log.levels.WARN)
-    return
-  end
-
-  fn(snacks)
-end
-
-local function snacks_commands()
-  snacks_call(function(snacks)
-    snacks.picker.commands({
-      confirm = function(picker, item)
-        picker:close()
-        vim.schedule(function()
-          vim.cmd(item.text or item.cmd or item.name)
-        end)
-      end,
-    })
-  end)
-end
-
-vim.keymap.set({ 'n', 'i', 'v' }, '<D-p>', function() snacks_call(function(snacks) snacks.picker.files() end) end, { desc = 'Find files' })
-vim.keymap.set({ 'n', 'i', 'v' }, '<D-S-p>', snacks_commands, { desc = 'Command palette' })
-vim.keymap.set('n', '<C-p>', function() snacks_call(function(snacks) snacks.picker.files() end) end, { desc = 'Find files' })
-vim.keymap.set('n', '<C-S-p>', snacks_commands, { desc = 'Command palette' })
-vim.keymap.set({ 'n', 'i', 'v' }, '<D-S-f>', function() snacks_call(function(snacks) snacks.picker.grep() end) end, { desc = 'Grep workspace' })
-vim.keymap.set({ 'n', 'i', 'v' }, '<D-b>', function() snacks_call(function(snacks) snacks.explorer() end) end, { desc = 'Toggle sidebar' })
-vim.keymap.set({ 'n', 'i', 'v' }, '<D-e>', function() snacks_call(function(snacks) snacks.picker.buffers() end) end, { desc = 'Switch buffer' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-p>', function() require('fff').find_files() end, { desc = 'Find files' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-S-p>', function() require('fff').live_grep() end, { desc = 'Grep workspace' })
+vim.keymap.set('n', '<C-p>', function() require('fff').find_files() end, { desc = 'Find files' })
+vim.keymap.set('n', '<C-S-p>', function() require('fff').live_grep() end, { desc = 'Grep workspace' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-S-f>', function() require('fff').live_grep() end, { desc = 'Grep workspace' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-b>', function() require('snacks').explorer() end, { desc = 'Toggle sidebar' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<D-e>', function() require('telescope.builtin').buffers() end, { desc = 'Switch buffer' })
 vim.keymap.set({ 'n', 'i' }, '<D-s>', '<Esc><cmd>w<CR>', { desc = 'Save' })
 vim.keymap.set({ 'n', 'i' }, '<D-z>', '<Esc>ua', { desc = 'Undo' })
 vim.keymap.set({ 'n', 'i' }, '<D-S-z>', '<Esc><C-r>a', { desc = 'Redo' })
@@ -142,16 +119,30 @@ require('lazy').setup({
       require('mini.files').setup()
       local starter = require('mini.starter')
       starter.setup({
-        header = function()
-          local hour = tonumber(os.date('%H'))
-          local greeting = 'evening'
-          if hour < 12 then
-            greeting = 'morning'
-          elseif hour < 18 then
-            greeting = 'afternoon'
-          end
-          return 'good ' .. greeting .. ', plyght'
-        end,
+        query_updaters = 'abcdefghilmnopqrstuvwxyz0123456789_-.',
+        header = table.concat({
+          '                   +++++++=+++++++=                   ',
+          '                  +@@@@@@@-=@@@@@@@-                  ',
+          '                 :@@@@@@@*  #@@@@@@@.                 ',
+          '                 %@@@@@@@.  :@@@@@@@*                 ',
+          '                =@@@@@@@-    =@@@@@@@-                ',
+          '               :@@@@@@@#++++++#@@@@@@@.               ',
+          '               #@@@@@@@@@@@@@@%@@@@@@@*               ',
+          '              =@@@@@@@-@@@@@@@%+@@@@@@@-              ',
+          '             .@@@@@@@* @@@@@@@%.%@@@@@@@.             ',
+          '             #@@@@@@@. @@@@@@@% :@@@@@@@*             ',
+          '            =@@@@@@@=  @@@@@@@%  +@@@@@@@-            ',
+          '           .@@@@@@@#   @@@@@@@%  .%@@@@@@%.           ',
+          '        :##%@@@@@@@%###-------=###%@@@@@@@%#*.        ',
+          '         .*@@@@@@@@@@@@.      :@@@@@@@@@@@@+.         ',
+          '           -@@@@@@@@@@@.      :@@@@@@@@@@%:           ',
+          '            .*@@@@@@@@@.      :@@@@@@@@@+.            ',
+          '              :--------#######*--------:              ',
+          '                       @@@@@@@%                       ',
+          '                       @@@@@@@%                       ',
+          '                       @@@@@@@%                       ',
+          '                       +++++++=                       ',
+        }, '\n'),
         footer = '',
         items = {
           function()
@@ -181,6 +172,38 @@ require('lazy').setup({
           starter.gen_hook.adding_bullet('  '),
           starter.gen_hook.aligning('center', 'center'),
         },
+      })
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'MiniStarterOpened',
+        callback = function(event)
+          vim.keymap.set('n', 'j', function() MiniStarter.update_current_item('next') end, { buffer = event.buf, silent = true, nowait = true })
+          vim.keymap.set('n', 'k', function() MiniStarter.update_current_item('prev') end, { buffer = event.buf, silent = true, nowait = true })
+
+          vim.api.nvim_set_hl(0, 'MiniStarterCursor', { blend = 100, nocombine = true })
+          local saved_guicursor = vim.o.guicursor
+          vim.o.guicursor = 'n-v-c-sm:MiniStarterCursor,i-ci-ve:ver25,r-cr-o:hor20'
+
+          vim.api.nvim_create_autocmd({ 'BufLeave', 'BufWipeout', 'CmdlineEnter' }, {
+            buffer = event.buf,
+            callback = function()
+              vim.o.guicursor = saved_guicursor
+            end,
+          })
+          vim.api.nvim_create_autocmd('BufEnter', {
+            buffer = event.buf,
+            callback = function()
+              vim.o.guicursor = 'n-v-c-sm:MiniStarterCursor,i-ci-ve:ver25,r-cr-o:hor20'
+            end,
+          })
+          vim.api.nvim_create_autocmd('CmdlineLeave', {
+            callback = function()
+              if vim.bo.filetype == 'ministarter' then
+                vim.o.guicursor = 'n-v-c-sm:MiniStarterCursor,i-ci-ve:ver25,r-cr-o:hor20'
+              end
+            end,
+          })
+        end,
       })
       
       vim.keymap.set('n', '<leader>e', function() require('mini.files').open(vim.api.nvim_buf_get_name(0)) end, { desc = 'File [E]xplorer' })
@@ -361,6 +384,7 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    main = 'nvim-treesitter.configs',
     opts = {
       ensure_installed = { 'bash', 'c', 'lua', 'markdown', 'markdown_inline', 'vim', 'vimdoc' },
       auto_install = true,
@@ -386,8 +410,33 @@ require('lazy').setup({
     priority = 1000,
     opts = {
       explorer = {},
-      picker = {},
     },
+  },
+
+
+  {
+    'dmtrKovalenko/fff.nvim',
+    version = '0.5.2',
+    build = function()
+      require('fff.download').download_or_build_binary()
+    end,
+    lazy = false,
+    opts = {
+      prompt = '🪿 ',
+      title = 'FFFiles',
+      lazy_sync = true,
+      debug = {
+        enabled = false,
+        show_scores = false,
+      },
+      logging = {
+        enabled = true,
+        log_level = 'info',
+      },
+    },
+    config = function(_, opts)
+      require('fff').setup(opts)
+    end,
   },
   
   {
@@ -403,7 +452,12 @@ require('lazy').setup({
       { '<leader>ac', '<cmd>AvanteClear<CR>', desc = '[A]vante [C]lear' },
     },
     opts = {
-      provider = 'claude-code',
+      provider = 'openai',
+      providers = {
+        openai = {
+          model = 'gpt-5.3-codex',
+        },
+      },
       hints = { enabled = false },
       mappings = {
         submit = {

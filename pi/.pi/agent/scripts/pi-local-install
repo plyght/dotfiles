@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: pi-local-install <package-source>"
+  echo "Example: pi-local-install npm:pi-rewind"
+  exit 1
+fi
+
+node "$HOME/.pi/agent/scripts/localize-pi-packages.mjs" "$1"
