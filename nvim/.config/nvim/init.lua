@@ -149,19 +149,48 @@ require('lazy').setup({
             local cwd = vim.loop.fs_realpath(vim.fn.getcwd()) or vim.fn.getcwd()
             local seen = {}
             local items = {}
+            local ignored_names = {
+              COMMIT_EDITMSG = true,
+              MERGE_MSG = true,
+              TAG_EDITMSG = true,
+              SQUASH_MSG = true,
+              EDIT_DESCRIPTION = true,
+              gitrebase = true,
+            }
+
+            local function should_hide_recent(path, rel)
+              local basename = vim.fn.fnamemodify(path, ':t')
+              if ignored_names[basename] then
+                return true
+              end
+
+              if rel:match('^%.git/') then
+                return true
+              end
+
+              if rel:match('^%.jj/') then
+                return true
+              end
+
+              return false
+            end
+
             for _, raw in ipairs(vim.v.oldfiles) do
               local path = vim.loop.fs_realpath(raw)
               if path and not seen[path] and vim.startswith(path, cwd .. '/') and vim.fn.filereadable(path) == 1 then
-                seen[path] = true
                 local rel = path:sub(#cwd + 2)
-                table.insert(items, {
-                  action = 'edit ' .. vim.fn.fnameescape(raw),
-                  name = rel,
-                  section = '',
-                })
-                if #items >= 5 then break end
+                if not should_hide_recent(path, rel) then
+                  seen[path] = true
+                  table.insert(items, {
+                    action = 'edit ' .. vim.fn.fnameescape(raw),
+                    name = rel,
+                    section = '',
+                  })
+                  if #items >= 5 then break end
+                end
               end
             end
+
             if #items == 0 then
               table.insert(items, { action = 'enew', name = 'new file', section = '' })
             end
@@ -495,11 +524,6 @@ require('lazy').setup({
     dependencies = {
       'MunifTanjim/nui.nvim',
       'nvim-tree/nvim-web-devicons',
-      {
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = { file_types = { 'markdown', 'Avante' } },
-        ft = { 'markdown', 'Avante' },
-      },
     },
   },
 

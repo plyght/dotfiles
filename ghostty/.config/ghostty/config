@@ -38,4 +38,3 @@ unfocused-split-opacity = 1
 # Commented or Optional Settings
 # background-opacity = 0.75
 keybind = shift+enter=text:\n
-macos-icon = xray
