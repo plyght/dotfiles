@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.70.2",
+  "lastChangelogVersion": "0.78.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "low",
@@ -30,12 +30,23 @@
     "./extensions/local-packages/pi-free/providers/modal.ts",
     "./extensions/local-packages/@tmustier-pi-ralph-wiggum/index.ts"
   ],
-  "packages": [],
+  "packages": [
+    "npm:pi-minions",
+    "npm:pi-web-access",
+    "npm:pi-cursor-provider",
+    "npm:amp-themes",
+    "npm:pi-xai-oauth",
+    "npm:@offbynan/pi-cursor-provider"
+  ],
   "disabledExtensions": [
     "npm:pi-hooks/permission/permission.ts"
   ],
   "permissionLevel": "high",
   "collapseChangelog": true,
   "enableInstallTelemetry": false,
-  "doubleEscapeAction": "tree"
+  "warnings": {
+    "anthropicExtraUsage": false
+  },
+  "doubleEscapeAction": "tree",
+  "theme": "dark"
 }

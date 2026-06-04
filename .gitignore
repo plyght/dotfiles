@@ -51,10 +51,21 @@ claude/.claude/transcripts/
 # Pi - ignore auth, sessions, history, and per-extension working data
 pi/.pi/agent/auth.json
 pi/.pi/agent/auth.json.lock
+pi/.pi/agent/*auth*
+pi/.pi/agent/*token*
+pi/.pi/agent/*secret*
+pi/.pi/agent/*credential*
+pi/.pi/agent/*.pem
+pi/.pi/agent/*.p8
+pi/.pi/agent/.env
+pi/.pi/agent/.env.*
+pi/.pi/agent/*.env
 pi/.pi/agent/sessions/
 pi/.pi/agent/run-history.jsonl
 pi/.pi/agent/memory/
 pi/.pi/agent/.extmgr-cache/
+pi/.pi/agent/cursor-model-cache.json
+pi/.pi/agent/cursor-sdk-context-windows.json
 pi/.pi/agent/pi-fff/
 pi/.pi/agent/pi-pretty/
 # Vendored npm packages produced by localize-pi-packages.mjs (node_modules-equivalent)
