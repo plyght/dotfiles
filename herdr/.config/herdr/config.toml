@@ -1,0 +1,136 @@
+# Herdr config tuned to feel closer to my Neovim setup.
+# Neovim notes mirrored here: space-as-leader vibe via Ctrl-Space prefix,
+# h/j/k/l pane movement, transparent/minimal Vesper-ish colors, and Cmd/Ctrl
+# style shortcuts for common actions where terminals support them.
+
+onboarding = false
+
+[theme]
+name = "vesper"
+
+# Match the muted transparent Neovim look from ../nvim/init.lua.
+# panel_bg = "reset" lets the terminal background show through, like bg=NONE.
+[theme.custom]
+panel_bg = "reset"
+accent = "#89b4fa"
+blue = "#89b4fa"
+red = "#ff6188"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+mauve = "#f5c2e7"
+teal = "#89dceb"
+
+[terminal]
+# New panes/tabs follow the current workspace/pane, like Neovim splits.
+new_cwd = "follow"
+
+[keys]
+# Neovim leader is Space; in a terminal multiplexer Ctrl-Space is the safest
+# equivalent that does not break normal shell/editor input as much as plain Space.
+prefix = "ctrl+g"
+
+# Core UI
+help = "prefix+?"
+settings = "prefix+comma"
+detach = "prefix+q"
+reload_config = "prefix+shift+r"
+open_notification_target = "prefix+alt+o"
+
+# Workspace / project navigation.
+# More macOS-ish: n = new workspace/window, w = close workspace/window.
+workspace_picker = "prefix+o"
+goto = "prefix+g"
+new_workspace = "cmd+n"
+rename_workspace = "prefix+alt+w"
+close_workspace = "cmd+shift+w"
+previous_workspace = "cmd+alt+left"
+next_workspace = "cmd+alt+right"
+new_worktree = "prefix+shift+g"
+open_worktree = "prefix+alt+g"
+remove_worktree = "prefix+alt+backspace"
+
+# Tabs: t = new tab, Cmd/Ctrl-ish close is w at workspace level above.
+new_tab = "cmd+t"
+rename_tab = "cmd+shift+t"
+previous_tab = "cmd+shift+left"
+next_tab = "cmd+shift+right"
+switch_tab = "cmd+1..9"
+close_tab = "cmd+w"
+
+# Panes: vim directions + Neovim-like split mnemonics.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+cycle_pane_next = "prefix+tab"
+cycle_pane_previous = "prefix+shift+tab"
+last_pane = "prefix+backtick"
+split_vertical = "cmd+d"
+split_horizontal = "cmd+shift+d"
+close_pane = "cmd+shift+x"
+rename_pane = "prefix+shift+p"
+zoom = "prefix+z"
+resize_mode = "prefix+r"
+edit_scrollback = "prefix+e"
+toggle_sidebar = "cmd+b"
+
+# Navigate mode keeps bare vim keys once opened.
+navigate_workspace_up = "up"
+navigate_workspace_down = "down"
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+# Agent rows: Alt-1..9 is similar to quick buffer/pane targeting.
+focus_agent = "prefix+alt+1..9"
+previous_agent = "prefix+alt+h"
+next_agent = "prefix+alt+l"
+
+# Handy project commands, matching the tools I tend to use from Neovim.
+[[keys.command]]
+key = "prefix+alt+f"
+type = "pane"
+command = "fzf"
+
+# Full quit/stop Herdr server. Use with care; q alone just detaches.
+[[keys.command]]
+key = "prefix+shift+q"
+type = "shell"
+command = "herdr server stop"
+
+[[keys.command]]
+key = "prefix+alt+z"
+type = "pane"
+command = "lazygit"
+
+[ui]
+# More compact/minimal, with labels visible like a statusline/tabline.
+sidebar_width = 26
+sidebar_min_width = 18
+sidebar_max_width = 36
+mobile_width_threshold = 64
+mouse_capture = true
+redraw_on_focus_gained = false
+mouse_scroll_lines = 3
+confirm_close = true
+prompt_new_tab_name = false
+show_agent_labels_on_pane_borders = true
+accent = "#89b4fa"
+
+agent_panel_sort = "spaces"
+[ui.toast]
+delivery = "terminal"
+
+[ui.sound]
+enabled = true
+
+[session]
+resume_agents_on_restore = true
+
+[experimental]
+pane_history = true
+allow_nested = false
+
+[advanced]
+scrollback_limit_bytes = 10000000

@@ -48,7 +48,7 @@ claude/.claude/stats-cache.json
 claude/.claude/telemetry/
 claude/.claude/transcripts/
 
-# Fish - never track secrets or machine-local history (fish/sync.sh also redacts secret-shaped values)
+# Fish - never track secrets or machine-local history (scripts/sync-fish.sh also redacts secret-shaped values)
 fish/.config/fish/fish_history
 fish/.config/fish/.env
 fish/.config/fish/.env.*
@@ -62,6 +62,23 @@ fish/.config/fish/*.bak.*
 fish/.config/fish/*.backup-*
 fish/.config/fish/**/*.bak
 fish/.config/fish/**/*.backup-*
+
+# Herdr - keep config.toml, drop runtime state (scripts/sync-herdr.sh also redacts secret-shaped values)
+herdr/.config/herdr/*.log
+herdr/.config/herdr/*.sock
+herdr/.config/herdr/session.json
+herdr/.config/herdr/session-history.json
+herdr/.config/herdr/release-notes.json
+herdr/.config/herdr/.env
+herdr/.config/herdr/.env.*
+herdr/.config/herdr/**/*secret*
+herdr/.config/herdr/**/*credential*
+herdr/.config/herdr/**/*.pem
+herdr/.config/herdr/**/*.p8
+herdr/.config/herdr/*.bak
+herdr/.config/herdr/*.bak-*
+herdr/.config/herdr/*.bak.*
+herdr/.config/herdr/*.backup-*
 
 # Pi - ignore auth, sessions, history, and per-extension working data
 pi/.pi/agent/auth.json
