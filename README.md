@@ -4,6 +4,7 @@ my personal dotfiles for macOS.
 
 ## Contents
 
+- **agents**: global agent skills store (`~/.agents`) managed by `bunx skills` — lockfile plus every installed skill, synced via `scripts/sync-skills.sh`
 - **claude**: [Claude Code](https://github.com/anthropics/claude-code) CLI config
 - **equibop**: [Equicord](https://equicord.org/) Discord client config
 - **flow**: [Flow Control](https://flow-control.dev/) editor config
@@ -25,7 +26,7 @@ git clone https://github.com/plyght/dotfiles.git ~/dotfiles
 
 Then (_I_) use [Stow](https://www.gnu.org/software/stow/) to symlink to ~/.config (or wherever your config dir is)
 ```bash
-stow claude & stow equibop & stow fish & stow flow & stow ghostty & stow herdr & stow nvim & stow opencode & stow pi & stow raycast
+stow agents & stow claude & stow equibop & stow fish & stow flow & stow ghostty & stow herdr & stow nvim & stow opencode & stow pi & stow raycast
 ```
 
 ## Usage

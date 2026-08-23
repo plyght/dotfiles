@@ -80,6 +80,14 @@ herdr/.config/herdr/*.bak-*
 herdr/.config/herdr/*.bak.*
 herdr/.config/herdr/*.backup-*
 
+# Agents / bunx skills store - keep .skill-lock.json and skill sources, drop junk
+agents/.agents/**/node_modules/
+agents/.agents/**/.env
+agents/.agents/**/.env.*
+agents/.agents/**/*.pem
+agents/.agents/**/*.p8
+agents/.agents/**/*.log
+
 # Pi - ignore auth, sessions, history, and per-extension working data
 pi/.pi/agent/auth.json
 pi/.pi/agent/auth.json.lock

@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "skillFolderHash": "0d5b74a14bdf3ebcd64f352d06376a2ef05ed296",
+      "installedAt": "2026-05-28T17:01:46.685Z",
+      "updatedAt": "2026-07-17T04:24:29.250Z"
+    },
+    "transitions-dev": {
+      "source": "Jakubantalik/transitions.dev",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Jakubantalik/transitions.dev.git",
+      "skillPath": "skills/transitions-dev/SKILL.md",
+      "skillFolderHash": "b5843d085c881a788329d6fdf41da9fed68b8e5b",
+      "installedAt": "2026-05-28T17:05:07.553Z",
+      "updatedAt": "2026-07-17T04:24:40.776Z"
+    },
+    "landing-page-copywriter": {
+      "source": "onewave-ai/claude-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/onewave-ai/claude-skills.git",
+      "skillPath": "landing-page-copywriter/SKILL.md",
+      "skillFolderHash": "8b86d14d2f049a598976fbb09cd1cd730f149ff2",
+      "installedAt": "2026-05-28T23:55:45.134Z",
+      "updatedAt": "2026-07-17T04:24:45.245Z"
+    },
+    "bevy": {
+      "source": "bfollington/terma",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/bfollington/terma.git",
+      "skillPath": "plugins/tsal/skills/bevy/SKILL.md",
+      "skillFolderHash": "cef3792c11205d9c40c78a61773cf6dad552bf12",
+      "installedAt": "2026-06-01T17:23:40.885Z",
+      "updatedAt": "2026-06-01T17:23:40.885Z"
+    },
+    "browser": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/browser/SKILL.md",
+      "skillFolderHash": "a24f98728784659e1ee17e13e902946d28b29357",
+      "installedAt": "2026-06-08T12:26:43.994Z",
+      "updatedAt": "2026-07-17T04:24:48.915Z"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "skillFolderHash": "3cf9a8db32597ba3e24b584a3d696f4e11c7d7b6",
+      "pluginName": "example-skills",
+      "installedAt": "2026-07-01T22:04:44.396Z",
+      "updatedAt": "2026-07-01T22:04:44.396Z"
+    },
+    "marketing-psychology": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coreyhaines31/marketingskills.git",
+      "skillPath": "skills/marketing-psychology/SKILL.md",
+      "skillFolderHash": "0a527bd6cff5ab2fe2b5a60b97d86013a385326a",
+      "installedAt": "2026-07-01T23:24:18.416Z",
+      "updatedAt": "2026-07-01T23:24:18.416Z"
+    },
+    "momentic-mobile-test": {
+      "source": "momentic-ai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/momentic-ai/skills.git",
+      "skillPath": "skills/momentic-mobile-test/SKILL.md",
+      "skillFolderHash": "0d701ac138e9b3f164183350320445029cf67463",
+      "installedAt": "2026-07-03T19:24:22.044Z",
+      "updatedAt": "2026-07-03T19:24:22.044Z"
+    },
+    "momentic-result-classification": {
+      "source": "momentic-ai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/momentic-ai/skills.git",
+      "skillPath": "skills/momentic-result-classification/SKILL.md",
+      "skillFolderHash": "49e9af1fc98cd7be915175bdc032a0c02206891c",
+      "installedAt": "2026-07-03T19:24:22.049Z",
+      "updatedAt": "2026-08-15T18:37:31.507Z"
+    },
+    "momentic-test": {
+      "source": "momentic-ai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/momentic-ai/skills.git",
+      "skillPath": "skills/momentic-test/SKILL.md",
+      "skillFolderHash": "8d8681b931c80d3dd09690291a21746c75cb5319",
+      "pluginName": "momentic-test",
+      "installedAt": "2026-07-03T19:24:22.050Z",
+      "updatedAt": "2026-07-03T19:24:22.050Z"
+    },
+    "open-edit": {
+      "source": "veedstudio/open-edit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/veedstudio/open-edit.git",
+      "skillPath": ".claude/skills/open-edit/SKILL.md",
+      "skillFolderHash": "067d955960dc7704ebc88af3d44043f4a0e4d215",
+      "installedAt": "2026-08-04T20:42:53.668Z",
+      "updatedAt": "2026-08-15T18:37:33.457Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "antigravity-cli",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed",
+    "pi",
+    "claude-code"
+  ]
+}
