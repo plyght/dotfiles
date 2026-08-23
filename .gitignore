@@ -48,6 +48,21 @@ claude/.claude/stats-cache.json
 claude/.claude/telemetry/
 claude/.claude/transcripts/
 
+# Fish - never track secrets or machine-local history (fish/sync.sh also redacts secret-shaped values)
+fish/.config/fish/fish_history
+fish/.config/fish/.env
+fish/.config/fish/.env.*
+fish/.config/fish/**/*secret*
+fish/.config/fish/**/*credential*
+fish/.config/fish/**/*.pem
+fish/.config/fish/**/*.p8
+fish/.config/fish/*.bak
+fish/.config/fish/*.bak-*
+fish/.config/fish/*.bak.*
+fish/.config/fish/*.backup-*
+fish/.config/fish/**/*.bak
+fish/.config/fish/**/*.backup-*
+
 # Pi - ignore auth, sessions, history, and per-extension working data
 pi/.pi/agent/auth.json
 pi/.pi/agent/auth.json.lock
